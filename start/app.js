@@ -61,6 +61,14 @@ document.addEventListener('DOMContentLoaded', () => {
     const text = input.value;
     // code for validating name is not already on list -- need to complete
     const span = ul.getElementsByTagName('span');
+    console.log(text);
+    console.log(span);
+    for (let j = 0; j < span.length; j ++) {
+      span[j].className = '';
+      if (text.length !== 0 && span[j].textContent.toLowerCase().includes(text.toLowerCase())) {
+        alert('You already entered that name. Please do not add repeat entries.');
+      }
+    }
     // code to validate input is not blank and show alert if it is blank
     if (text === '') {
       input.style.border = 'solid 1px tomato';
