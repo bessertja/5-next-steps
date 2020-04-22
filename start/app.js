@@ -61,16 +61,22 @@ document.addEventListener('DOMContentLoaded', () => {
     const text = input.value;
     // code for validating name is not already on list -- need to complete
     const span = ul.getElementsByTagName('span');
-    console.log(text);
-    console.log(span);
-    for (let j = 0; j < span.length; j ++) {
-      span[j].className = '';
-      if (text.length !== 0 && span[j].textContent.toLowerCase().includes(text.toLowerCase())) {
+    for (let j = 0; j <= span.length; j ++) {
+      if (span.length >= 0 && text === '') {
+        input.style.border = 'solid 1px tomato';
+        input.style.borderRadius = '.2em';
+        alert("Your entry was blank. Please try again."); 
+      } else if (span.length > 0 && span[j].textContent.toLowerCase().includes(text.toLowerCase())) {
         alert('You already entered that name. Please do not add repeat entries.');
+      } else {
+        input.value = '';
+        input.style.border = '';
+        const li = createLI(text);
+        ul.appendChild(li);
       }
     }
     // code to validate input is not blank and show alert if it is blank
-    if (text === '') {
+/*    if (text === '') {
       input.style.border = 'solid 1px tomato';
       input.style.borderRadius = '.2em';
       alert("Your entry was blank. Please try again."); 
@@ -79,7 +85,7 @@ document.addEventListener('DOMContentLoaded', () => {
       input.style.border = '';
       const li = createLI(text);
       ul.appendChild(li);
-    }
+    }*/
   });
     
   ul.addEventListener('change', (e) => {
